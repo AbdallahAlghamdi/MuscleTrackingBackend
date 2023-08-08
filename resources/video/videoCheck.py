@@ -12,9 +12,10 @@ class VideoCheck(Resource):
         count = mycursor.execute(command)
        
         result = mycursor.fetchall()
+        print(result)
         if(mycursor.rowcount>0):
             return result, 999
-        else:
+        else:   
             return {"ERROR_ID":"NO RESULT"}
         
         
