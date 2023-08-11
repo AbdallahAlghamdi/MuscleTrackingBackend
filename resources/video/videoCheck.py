@@ -8,11 +8,10 @@ class VideoCheck(Resource):
     def get(self, video_id):
         cnx, mycursor = getConnection()
         
-        command = 'select * from videos where ID = ' + str(video_id)
+        command = 'select Name, Views, Likes from videos where ID = ' + str(video_id)
         count = mycursor.execute(command)
        
         result = mycursor.fetchall()
-        print(result)
         if(mycursor.rowcount>0):
             return result, 999
         else:   

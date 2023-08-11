@@ -1,6 +1,5 @@
-from flask_restful import Resource, Api, reqparse
+from flask_restful import Resource, reqparse
 from resources.sqlConnection import getConnection
-import mysql.connector
 
 #----Args---
 video_put_args = reqparse.RequestParser()
