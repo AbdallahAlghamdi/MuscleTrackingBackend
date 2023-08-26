@@ -5,7 +5,7 @@ class GetVideoIDs(Resource):
         cnx, mycursor = getConnection()
         
         command = 'select ID from videos'
-        count = mycursor.execute(command)
+        mycursor.execute(command)
         
         result = mycursor.fetchall()
         if(mycursor.rowcount>0):

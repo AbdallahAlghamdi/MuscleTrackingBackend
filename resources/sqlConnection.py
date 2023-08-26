@@ -8,7 +8,7 @@ def getConnection():
     host = "balmung-do-user-14468201-0.b.db.ondigitalocean.com",
     port = "25060",
     database = "defaultdb" )
-    return cnx, cnx.cursor(dictionary=True)
+    return cnx, cnx.cursor(dictionary=True, buffered=True)
 
 
     
