@@ -8,5 +8,7 @@ class getAvgExcercise(Resource):
         print(command)
         mycurser.execute(command)
         result = mycurser.fetchall()
-        return result, 200
+        if(mycurser.rowcount >0):
+            return result, 200
+        return {'Status': 'Empty'}, 401
     

@@ -6,7 +6,7 @@ from resources.video.VideoID import GetVideoIDs
 from resources.Login.login import login
 from resources.excercise.new_excercise import addExcercise
 from resources.excercise.get_avg_excercise import getAvgExcercise
-from gevent.pywsgi import WSGIServer
+#from gevent.pywsgi import WSGIServer
 
 
 #-----
