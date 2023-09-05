@@ -6,7 +6,7 @@ from resources.video.VideoID import GetVideoIDs
 from resources.Login.login import login
 from resources.excercise.new_excercise import addExcercise
 from resources.excercise.excercise import getAvgExcercise, getExcerciseID, getDetailExercise
-#from gevent.pywsgi import WSGIServer
+from gevent.pywsgi import WSGIServer
 
 
 #-----
@@ -26,8 +26,8 @@ api.add_resource(getDetailExercise, '/getDetailExercise/<int:exercise_id>')
 
 
 if __name__ == '__main__':
-    app.run( debug=True)
-    #http_server = WSGIServer(('', 8080), app)
-    #http_server.serve_forever()
+    #app.run( debug=True)
+    http_server = WSGIServer(('', 8080), app)
+    http_server.serve_forever()
 
     
