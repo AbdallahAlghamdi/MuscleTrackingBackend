@@ -5,7 +5,7 @@ from resources.video.videoCheck import VideoCheck
 from resources.video.VideoID import GetVideoIDs
 from resources.Login.login import login
 from resources.excercise.new_excercise import addExcercise
-from resources.excercise.get_avg_excercise import getAvgExcercise
+from resources.excercise.excercise import getAvgExcercise, getExcerciseID, getDetailExercise
 #from gevent.pywsgi import WSGIServer
 
 
@@ -20,7 +20,8 @@ api.add_resource(GetVideoIDs, "/videosList")
 api.add_resource(login,'/login')
 api.add_resource(addExcercise, '/newExcercise')
 api.add_resource(getAvgExcercise, '/getavg/<int:account_number>/<muscle_group>')
-
+api.add_resource(getExcerciseID, '/getExcerciseID/<int:account_number>/<muscle_group>')
+api.add_resource(getDetailExercise, '/getDetailExercise/<int:exercise_id>')
 
 
 
