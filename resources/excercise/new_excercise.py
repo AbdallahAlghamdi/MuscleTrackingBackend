@@ -6,7 +6,7 @@ from resources.sqlConnection import getConnection
 #----Args---
 excerciseData = reqparse.RequestParser()
 excerciseData.add_argument("account_number", type = int, required=True, help="Account number must be present")
-excerciseData.add_argument("average_data", type = int, required=True, help="Average data must be present")
+excerciseData.add_argument("average_data", type = float, required=True, help="Average data must be present")
 excerciseData.add_argument("muscle_group", type = str, required=True, help="Muscle group name must be present")
 excerciseData.add_argument("raw_data", type = int, action="append", location='json')
 def addExcerciseData(dicts):
