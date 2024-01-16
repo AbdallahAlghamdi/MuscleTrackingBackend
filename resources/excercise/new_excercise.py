@@ -19,7 +19,7 @@ def addExcerciseData(dicts):
     print("average_data: " + str(average_data))
     print("call new_excercise(%d, %.2f, '%s')" %(account_number, average_data, muscle_group))
     print('------------')
-    mycursor.execute("call new_excercise(%d, %d, '%s')" %(account_number, average_data, muscle_group))
+    mycursor.execute("call new_excercise(%d, %f, '%s')" %(account_number, average_data, muscle_group))
     new_ID = mycursor.fetchone()['LAST_INSERT_ID()']
     cnx.close()
     mycursor.close()
