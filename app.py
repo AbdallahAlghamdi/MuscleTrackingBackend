@@ -26,7 +26,7 @@ api.add_resource(getDetailExercise, '/getDetailExercise/<int:exercise_id>')
 
 
 if __name__ == '__main__':
-    #app.run( debug=True)
+    # app.run( debug=True)
     http_server = WSGIServer(('', 8080), app)
     http_server.serve_forever()
 
