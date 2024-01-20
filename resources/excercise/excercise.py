@@ -2,9 +2,11 @@ from ..sqlConnection import getConnection
 from flask_restful import Resource
 
 class getAvgExcercise(Resource):
-    def get(self,account_number, muscle_group):
+    def get(self,account_number, muscle_group, duration):
+        print("CALL get_Avg_Exercise(%d,'%s','%s');"%(account_number, muscle_group, duration))
         cnx, mycurser = getConnection()
-        command = "SELECT average_data from exercise_data where muscle_group = '%s' and account_number = %d LIMIT 7"%(muscle_group,account_number)
+        # command = "SELECT average_data from exercise_data where muscle_group = '%s' and account_number = %d LIMIT 7"%(muscle_group,account_number)
+        command = "CALL get_Avg_Exercise(%d,'%s','%s');"%(account_number, muscle_group, duration)
         print(command)
         mycurser.execute(command)
         result = mycurser.fetchall()
