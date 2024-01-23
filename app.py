@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_restful import Api
+from resources.patients.addpatient import addPatient
 from resources.patients.patientsInfo import getPatientInfo
 from resources.video.videoSubmission import VideoSubmission
 from resources.video.videoCheck import VideoCheck
@@ -21,9 +22,10 @@ api.add_resource(GetVideoIDs, "/videosList")
 api.add_resource(login,'/login')
 api.add_resource(addExcercise, '/newExcercise')
 api.add_resource(getAvgExcercise, '/getavg/<int:account_number>/<muscle_group>/<duration>')
-api.add_resource(getExcerciseID, '/getExcerciseID/<int:account_number>/<muscle_group>')
+api.add_resource(getExcerciseID, '/getExcerciseID/<int:account_number>/<muscle_group>/<duration>')
 api.add_resource(getDetailExercise, '/getDetailExercise/<int:exercise_id>')
 api.add_resource(getPatientInfo,'/getPatientInfo/<int:doctor_number>')
+api.add_resource(addPatient,'/addPatient/<int:doctor_number>/<int:patient_number>')
 
 
 
