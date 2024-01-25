@@ -1,24 +1,24 @@
 from flask_restful import Resource, reqparse
 from resources.sqlConnection import getConnection
 
-#----Args---
-video_put_args = reqparse.RequestParser()
-video_put_args.add_argument("username", type = str, help="Error, expecting String for username")
-video_put_args.add_argument("password", type = str, help="Error, expecting String for password")
 
 #---
 class login(Resource):
-    def post(self):
-        args = video_put_args.parse_args()
+    def get(self, username, password):
         cnx, mycursor = getConnection()
-        print('%s and %s'%(args["username"], args["password"]))
-        command = 'select _status from Accounts where username = \'%s\' and _password = \'%s\' '%(args['username'], args['password'] )
+        command = "call login('%s', '%s')"%(username, password);
+        print("\n\n"+ command +"\n\n")
 
         mycursor.execute(command)
         
         result = mycursor.fetchall()
         if(mycursor.rowcount>0):
+            print("Entered row coutn")
+
+            if result:
+                print("list is not empty")
+            else: print("list is empty")
             print(list(mycursor))
-            return result, 999
+            return result, 200
         else:   
-            return {"ERROR_ID":"NO RESULT"}
+            return {'Status': 'Error'},404
