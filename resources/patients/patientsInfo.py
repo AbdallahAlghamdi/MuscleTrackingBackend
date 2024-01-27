@@ -12,3 +12,4 @@ class getPatientInfo(Resource):
         if(mycurser.rowcount >0):
             return result, 200
         return {'Status': 'Empty'}, 401
+    

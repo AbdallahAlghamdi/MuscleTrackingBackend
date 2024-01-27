@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_restful import Api
+from resources.getRecipients import getRecipients
 from resources.patients.addpatient import addPatient
 from resources.patients.patientsInfo import getPatientInfo
 from resources.video.videoSubmission import VideoSubmission
@@ -26,6 +27,7 @@ api.add_resource(getExcerciseID, '/getExcerciseID/<int:account_number>/<muscle_g
 api.add_resource(getDetailExercise, '/getDetailExercise/<int:exercise_id>')
 api.add_resource(getPatientInfo,'/getPatientInfo/<int:doctor_number>')
 api.add_resource(addPatient,'/addPatient/<int:doctor_number>/<int:patient_number>')
+api.add_resource(getRecipients, '/getRecipients/<int:account_number>')
 
 
 
