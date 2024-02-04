@@ -8,18 +8,21 @@ excerciseData = reqparse.RequestParser()
 excerciseData.add_argument("account_number", type = int, required=True, help="Account number must be present")
 excerciseData.add_argument("average_data", type = float, required=True, help="Average data must be present")
 excerciseData.add_argument("muscle_group", type = str, required=True, help="Muscle group name must be present")
+excerciseData.add_argument("duration", type = int, required=True)
 excerciseData.add_argument("raw_data", type = int, action="append", location='json')
+
 def addExcerciseData(dicts):
     cnx, mycursor = getConnection()
     cnx.autocommit = True
     account_number = dicts["account_number"]
     average_data = dicts["average_data"]
     muscle_group = dicts["muscle_group"]
+    duration = dicts["duration"]
     print('------------')
     print("average_data: " + str(average_data))
-    print("call new_excercise(%d, %.2f, '%s')" %(account_number, average_data, muscle_group))
+    print("call new_excercise(%d, %.2f, '%s', %d)" %(account_number, average_data, muscle_group, duration))
     print('------------')
-    mycursor.execute("call new_excercise(%d, %f, '%s')" %(account_number, average_data, muscle_group))
+    mycursor.execute("call new_excercise(%d, %.2f, '%s', %d)" %(account_number, average_data, muscle_group, duration))
     new_ID = mycursor.fetchone()['LAST_INSERT_ID()']
     cnx.close()
     mycursor.close()
@@ -37,6 +40,7 @@ class addExcercise(Resource):
     def post(self):
         print("something!")
         args = excerciseData.parse_args()
+        print(args)
         addExcerciseData(args)
         return {'status':'added'}
     

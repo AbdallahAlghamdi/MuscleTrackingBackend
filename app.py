@@ -1,6 +1,12 @@
 from flask import Flask
 from flask_restful import Api
+from resources.Login.signup import newAccount
+from resources.mail.getMail import getMail
 from resources.getRecipients import getRecipients
+from resources.mail.getNotifications import getNotifiactions
+from resources.mail.getSentMail import getSentMail
+from resources.mail.newMail import addMailMessage
+from resources.mail.setMailReady import setMailReady
 from resources.patients.addpatient import addPatient
 from resources.patients.patientsInfo import getPatientInfo
 from resources.video.videoSubmission import VideoSubmission
@@ -28,6 +34,17 @@ api.add_resource(getDetailExercise, '/getDetailExercise/<int:exercise_id>')
 api.add_resource(getPatientInfo,'/getPatientInfo/<int:doctor_number>')
 api.add_resource(addPatient,'/addPatient/<int:doctor_number>/<int:patient_number>')
 api.add_resource(getRecipients, '/getRecipients/<int:account_number>')
+api.add_resource(getMail, '/getMail/<int:account_number>')
+api.add_resource(addMailMessage, '/newMail')
+api.add_resource(getSentMail, '/getSentMail/<int:account_number>')
+api.add_resource(newAccount, '/signUp')
+api.add_resource(setMailReady, '/readMail/<int:messageID>')
+api.add_resource(getNotifiactions, '/getNotifications/<int:account_number>')
+
+
+
+
+
 
 
 
