@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_restful import Api
 from resources.Login.signup import newAccount
+from resources.excercise.get_summary_milestones import getSummaryMilestones
 from resources.mail.getMail import getMail
 from resources.getRecipients import getRecipients
 from resources.mail.getNotifications import getNotifiactions
@@ -40,12 +41,7 @@ api.add_resource(getSentMail, '/getSentMail/<int:account_number>')
 api.add_resource(newAccount, '/signUp')
 api.add_resource(setMailReady, '/readMail/<int:messageID>')
 api.add_resource(getNotifiactions, '/getNotifications/<int:account_number>')
-
-
-
-
-
-
+api.add_resource(getSummaryMilestones, '/getSummary/<int:account_number>')
 
 
 if __name__ == '__main__':
