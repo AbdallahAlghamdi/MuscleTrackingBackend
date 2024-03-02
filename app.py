@@ -48,8 +48,8 @@ api.add_resource(getPatientMilestones, '/getPatientSummary/<int:account_number>/
 api.add_resource(newMilestone, '/newMilestone/<int:patientID>/<int:duration>/<muscleGroup>/<durationGroup>')
 
 if __name__ == '__main__':
-    app.run( debug=True)
-    # http_server = WSGIServer(('', 8080), app)
-    # http_server.serve_forever()
+    # app.run( debug=True)
+    http_server = WSGIServer(('', 8080), app)
+    http_server.serve_forever()
 
     
