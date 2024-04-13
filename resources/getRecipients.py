@@ -9,4 +9,4 @@ class getRecipients(Resource):
         result = mycurser.fetchall()
         if(mycurser.rowcount >0):
             return result, 200
-        return {'Status': 'Empty'}, 401
+        return {'Status': 'Empty'}, 400

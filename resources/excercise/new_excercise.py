@@ -2,7 +2,6 @@ from ..sqlConnection import getConnection
 from flask_restful import Resource, reqparse
 from resources.sqlConnection import getConnection
 
-
 #----Args---
 excerciseData = reqparse.RequestParser()
 excerciseData.add_argument("account_number", type = int, required=True, help="Account number must be present")
@@ -18,27 +17,20 @@ def addExcerciseData(dicts):
     average_data = dicts["average_data"]
     muscle_group = dicts["muscle_group"]
     duration = dicts["duration"]
-    print('------------')
-    print("average_data: " + str(average_data))
-    print("call new_excercise(%d, %.2f, '%s', %d)" %(account_number, average_data, muscle_group, duration))
-    print('------------')
     mycursor.execute("call new_excercise(%d, %.2f, '%s', %d)" %(account_number, average_data, muscle_group, duration))
     new_ID = mycursor.fetchone()['LAST_INSERT_ID()']
     cnx.close()
     mycursor.close()
     addRawData(new_ID, dicts["raw_data"])
-    
+
 def addRawData(id ,dicts):
     for i in dicts:
         cnx, mycursor = getConnection()
         cnx.autocommit = True
         mycursor.execute("INSERT INTO raw_data(value, excercise_id) values (%d, %d)"%(i, id))
-    
-    
 #----
 class addExcercise(Resource):
     def post(self):
-        print("something!")
         args = excerciseData.parse_args()
         print(args)
         addExcerciseData(args)

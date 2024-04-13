@@ -23,8 +23,5 @@ def addMailToDatabase(dicts):
 class addMailMessage(Resource):
     def post(self):
         args = messageData.parse_args()
-        print("-------------")
-        print(args)
-        print("-------------")
         addMailToDatabase(args)
         return {'status':'added'}

@@ -5,10 +5,8 @@ class getNotifiactions(Resource):
     def get(self, account_number):
         cnx, mycurser = getConnection()
         command = 'CALL get_notifications(%d);'%account_number
-        print(command)
         mycurser.execute(command)
         result = mycurser.fetchall()
-        # setAllAsRead(account_number)
         if(mycurser.rowcount >0):
             return result, 200
-        return {'Status': 'Empty'}, 401
+        return {'Status': 'Empty'}, 400

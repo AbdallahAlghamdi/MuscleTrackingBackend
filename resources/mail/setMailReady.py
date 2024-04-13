@@ -8,9 +8,6 @@ class setMailReady(Resource):
         cnx.autocommit = True
         command = 'UPDATE notifications set hasRead = 1 where message_id = %d;'%messageID
         mycurser.execute(command)
-        
         print(command)
         mycurser.execute(command)
-        result = mycurser.fetchall()
-        
         return {'Status': 'Read!'}, 200

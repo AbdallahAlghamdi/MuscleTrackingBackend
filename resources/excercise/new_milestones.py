@@ -3,6 +3,7 @@ from flask_restful import Resource, reqparse
 from resources.sqlConnection import getConnection
 cnx, mycurser = getConnection()
 cnx.autocommit = True
+
 def updateRow(patientID, duration, muscleGroup, durationGroup):
     command = "UPDATE milestones SET %s = %d WHERE patient_id = %d AND muscleGroup = '%s';"%(durationGroup, duration, patientID, muscleGroup)
     print(command)
@@ -12,7 +13,6 @@ def updateRow(patientID, duration, muscleGroup, durationGroup):
 def insertNewRow(patientID, duration, muscleGroup, durationGroup):
     command = "INSERT INTO milestones(patient_id, muscleGroup) values (%d, '%s')"%(patientID, muscleGroup)
     print(command)
-
     mycurser.execute(command)
     updateRow(patientID, duration, muscleGroup, durationGroup)
 class newMilestone(Resource):
@@ -22,5 +22,3 @@ class newMilestone(Resource):
         else:
             insertNewRow(patientID, duration, muscleGroup, durationGroup)   
             return {'Status': 'Inserted'}, 200
-    
-    
