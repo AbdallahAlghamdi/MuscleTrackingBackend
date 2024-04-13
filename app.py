@@ -53,8 +53,8 @@ api.add_resource(getPatientInfo,'/getPatientInfo/<int:doctor_number>')
 
 
 if __name__ == '__main__':
-    app.run( debug=True)
-    # http_server = WSGIServer(('', 8080), app)
-    # http_server.serve_forever()
+    # app.run( debug=True)
+    http_server = WSGIServer(('', 8080), app)
+    http_server.serve_forever()
 
     
